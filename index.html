@@ -122,7 +122,7 @@ section.s{position:relative;padding:92px 24px;text-align:center;overflow:hidden}
 .quote q{display:block;quotes:none;font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:1.5rem;line-height:1.4;color:var(--moss-d)}
 .sign{font-size:2.6rem;color:#6a6244;margin-top:22px;clip-path:inset(0 100% 0 0);transition:clip-path 3.2s cubic-bezier(.4,0,.2,1) .9s;display:inline-block;padding-right:6px}
 .in .sign{clip-path:inset(0 0 0 0)}
-.pen{position:absolute;width:210px;right:-46px;bottom:-14px;z-index:3;transform:rotate(-34deg) translateX(calc(var(--px,0)*1px));filter:drop-shadow(0 8px 6px rgba(40,35,10,.35));transform-origin:right center;transition:transform .2s linear}
+.pen{position:absolute;width:210px;right:-46px;bottom:-14px;z-index:3;transform:rotate(-34deg);filter:drop-shadow(0 8px 6px rgba(40,35,10,.35));transform-origin:right center}
 
 /* guarda la fecha */
 .big{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-variant-numeric:lining-nums;font-size:clamp(8rem,44vw,12rem);line-height:.9;margin-top:10px;
@@ -435,7 +435,7 @@ section.s{position:relative;padding:92px 24px;text-align:center;overflow:hidden}
   </section>
 
   <!-- ===== confirmación ===== -->
-  <section class="s" id="rsvp">
+  <section class="s" id="rsvp" hidden style="display:none"><!-- Formulario de confirmación oculto a petición de los novios; el código se conserva. Para volver a mostrarlo, quitar hidden y style="display:none". -->
     <div class="wrap">
       <div class="lab rv">Confirmación</div>
       <h2 class="h2 rv" style="--d:.1s">Una carta <em>de vuelta</em></h2>
@@ -502,7 +502,7 @@ const CONFIG = {
     frase: "Donde nos diremos «sí, quiero»."
   },
   finca: {
-    nombre: ["La Cañada", "Mónico"],
+    nombre: ["La Cañada", "de Mónico"],
     dir: ["Km. 1,600 · M-5033", "Peralejo · Madrid"],
     mapa: "https://maps.app.goo.gl/iLw4C3JiEyiRDPjDA",
     frase: "Donde brindaremos, cenaremos y bailaremos juntos."
@@ -514,12 +514,12 @@ const CONFIG = {
     ["00:00", "La fiesta", "Los zapatos cómodos eran una buena idea.", "Hasta las 4:00"]
   ],
 
-  iban: "ES46 0049 5192 8124 1696 172",
+  iban: "ES46 0049 5192 8124 1696 1722",
   titulares: "Andrea Benito Linares y Francisco José Pérez Hernández",
   concepto: "Nombre + Apellidos",
   historia: [
     ["2013", "La Primera Mirada", "Aunque nuestros caminos se cruzaron por primera vez en las aulas de 1º de infantil con 3 añitos, no fue hasta 2013 cuando esas miradas se volvieron diferentes."],
-    ["2023", "UNA Familia Juntos", "Irnos a vivir juntos se hizo mucho más llevadero con la llegada del primer integrante de nuestra familia, Nene, al que llevaremos siempre en nuestro corazón."],
+    ["2023", "UNA Familia Juntos", "Irnos a vivir juntos se hizo mucho más fácil con la llegada del primer integrante de nuestra familia, Nene, al que llevaremos siempre en nuestro corazón."],
     ["2026", "EL GRAN \"¡SÍ!\"", "Con Nene como testigo, en Traguntía y con lágrimas de emoción. La promesa de seguir caminando juntos siempre."]
   ],
   contactos: [["Fran", "696251789"], ["Andrea", "619979040"]],
@@ -653,7 +653,6 @@ function onScroll(){
   tick = false;
   const vh = innerHeight;
   const pr = pen.parentElement.getBoundingClientRect();
-  pen.style.setProperty("--px", Math.max(-60, Math.min(30, (pr.top - vh * .55) * .12)));
   const r = tl.getBoundingClientRect();
   tl.style.setProperty("--p", Math.max(0, Math.min(1, (vh * .62 - r.top) / r.height)));
   decos.forEach(d => { const rr = d.parentElement.getBoundingClientRect(); d.style.translate = `0 ${(rr.top - vh/2) * parseFloat(d.dataset.par)}px`; });
